@@ -1,9 +1,5 @@
-class Score():
+class Score(object):
     def __init__(self):
-        self.team1 = 0
-        self.team2 = 0
-
-    def reset(self):
         self.team1 = 0
         self.team2 = 0
 
@@ -21,11 +17,7 @@ class Game(object):
     def set_team2(self, team):
         self.team2 = team
 
-    def reset_score(self):
-        self.score.reset()
-
     def score_goal(self, team, auto_goal=False):
-        # print 'score goal ', team
         factor = 1
         if auto_goal:
             if self.current_ball.get_points() == -1:
@@ -35,11 +27,7 @@ class Game(object):
         if self.is_over():
             return  # it could raise an exception
         if team == 1:
-            # print "current ball: ", self.current_ball.get_points()
-            # print "factor: ", factor
             self.score.team1 += factor * self.current_ball.get_points()
-            # print "team1: ", self.score.team1
-            # print "team2: ", self.score.team2
         else:
             self.score.team2 += factor * self.current_ball.get_points()
 
@@ -88,4 +76,5 @@ class Ball(object):
 
 
 class Player(object):
-    pass
+    def __init__(self, name):
+        self.name = name

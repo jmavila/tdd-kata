@@ -1,4 +1,4 @@
-# -- FILE: features/steps/example_steps.py
+# -- FILE: features/steps/mopes_steps.py
 from behave import given, when, then, step
 from mopes import Game, Team, Player, Ball
 
@@ -6,16 +6,12 @@ from mopes import Game, Team, Player, Ball
 @given(u'we have an empty game')
 def step_impl(context):
     context.game = Game()
-    context.teams = {}
 
 
-@given(u'the game score is reset')
-def step_impl(context):
-    context.game.reset_score()
-
-
-@given(u'we have team {team_id:d} with players {player1} and {player2}')
-def step_impl(context, team_id, player1, player2):
+@given(u'we have team {team_id:d} with players {player1_name} and {player2_name}')
+def step_impl(context, team_id, player1_name, player2_name):
+    player1 = Player(player1_name)
+    player2 = Player(player2_name)
     if team_id == 1:
         context.team1 = Team(player1, player2)
     elif team_id == 2:
@@ -44,9 +40,8 @@ def step_impl(context, team_id, points):
 
 @given(u'we have an initialized game with two teams')
 def step_impl(context):
-    player_list = ['Player ' + str(i) for i in range(1,5)]
-    team1 = Team(*player_list[0:2])
-    team2 = Team(*player_list[2:4])
+    team1 = Team(Player('Player1'), Player('Player2'))
+    team2 = Team(Player('Player3'), Player('Player3'))
     context.game = Game(team1, team2)
 
 
@@ -78,6 +73,7 @@ def step_impl(context, team, points):
 @then(u'the game is over')
 def step_impl(context):
     assert context.game.is_over()
+
 
 @then(u'the winner team is the team {team:d}')
 def step_impl(context, team):
@@ -112,5 +108,3 @@ def step_impl(context):
 @when(u'the team {team:d} scores an autogoal')
 def step_impl(context, team):
     context.game.score_goal(team, auto_goal=True)
-
-

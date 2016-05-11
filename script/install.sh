@@ -1,6 +1,6 @@
 echo "Downloading repository"
 
-git clone https://github.com/jmavila/tdd-kata.git
+git clone https://github.com/jmavila/tdd-kata.git -b start
 
 cd tdd
 

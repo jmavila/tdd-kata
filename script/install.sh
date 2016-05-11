@@ -13,4 +13,4 @@ source tdd_venv/bin/activate
 pip install -r tdd-kata/requirements.txt
 
 #$1 should be the team number
-git dheckout -b team_%1
+git checkout -b team_%1

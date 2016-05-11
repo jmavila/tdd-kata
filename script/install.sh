@@ -10,7 +10,7 @@ virtualenv tdd_venv
 
 source tdd_venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r tdd-kata/requirements.txt
 
 #sudo npm install gulp -g
 #sudo npm install gulp-shell

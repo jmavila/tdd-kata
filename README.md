@@ -1,5 +1,4 @@
-# tdd
-### TDD bi4group labday: _"Game of Mopes kata"_
+# TDD bi4group labday: _"Game of Mopes kata"_
 
 ## Installation instructions
 
